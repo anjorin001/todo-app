@@ -1,0 +1,17 @@
+TEAM MESSAGE BOARD
+
+This file should be used by all team members from time to time to share only important messages.
+
+Format:
+DATE-MONTH, SENDER: MESSAGE
+
+Example:
+2-APR, Favour: I created a useContext in the TaskContext component. The following variables are now available to all components – tasks, setTasks, allTasks, setAllTasks-- To have access(
+    in your file:
+    import {Task} from './components/Addtask.jsx'
+    import  useContext from 'react'
+    in your function:
+    const {task, setTask} = useContext(Task) // you destruct the varaible you need e.g allTask...
+    Now you can make use of task values and modify task with setask in your component :)
+)
+------------------------------------------------------------------------------------------------------------
