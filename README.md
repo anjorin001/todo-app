@@ -50,8 +50,7 @@ const addTask = (page, newTaskText) => {
 -------------------------------------------------------------------------------
 ❤️ Task Breakdown & Collaboration Strategy
 
-1️⃣ Favour: Navbar, Add Task, Edit Task
-✅ The navbar should have links (e.g., Page 1, Page 2).
+1️⃣ Favour: Add Task, Edit Task
 ✅ The Add Task function should update the useState and add a new task.
 ✅ The Edit Task function should allow users to update the task text.
 🔹 Favour needs to communicate with Sam (so tasks update properly in the UI).
@@ -96,7 +95,10 @@ tasks["page1"].map(task => <TaskItem key={task.id} {...task} />);
 ✅ Style completed tasks (gray out + strikethrough).
 🔹 Basit must sync with Austin for completed task styles.
 -------------------------------------------------------------------------------
+6️⃣ Ayomide: Navbar
+✅ The navbar should have links (e.g., Page 1, Page 2).
 
+-------------------------------------------------------------------------------
 
 TAKE A LOOK AT THE END PRODUCT BELOW:
 ![alt text](<WhatsApp Image 2025-03-31 at 18.02.21_6a9d8462.jpg>)
@@ -131,9 +133,10 @@ git push origin feature-name
 2️⃣ Code Guidelines
 ---
 ✅ Keep code clean & readable (use meaningful variable names).
+✅ Your component names should begin with Capital Letter & CAMEL CASING SHOULD BE IMPLEMENTED (MUST)
 ✅ Implement regular use of comment as you code.
 ✅ Use useState properly to manage tasks efficiently.
-✅ Avoid breaking existing features—test before pushing.
+✅ Avoid breaking existing features—test before pushing( ENSURE THE APPLICATION IS NOT LEFT IN ERROR  BEFORE PUSHING BACK TO MAIN)
 
 3️⃣ Collaboration Rules
 ---
