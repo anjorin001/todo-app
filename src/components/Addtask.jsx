@@ -3,7 +3,8 @@ import { Task } from './TaskContext'
 import { useContext } from 'react'
 import { useEffect } from 'react'
 const Addtask = ({ currentPage }) => {
-    const {tasks, setTasks, AllTasks, setAllTasks, taskValue, setTaskValue, taskDate,setTaskDate,taskTime,setTaskTime } = useContext(Task)
+    const { tasks, setTasks, AllTasks, setAllTasks, taskValue, setTaskValue, taskDate, setTaskDate, taskTime, setTaskTime } = useContext(Task)
+    // responsible for updating our task state
     const handleSubmit = (e, page, TaskText, TaskDate, TaskTime) => {
         e.preventDefault()
         setTasks((prevTasks) => ({
@@ -14,7 +15,7 @@ const Addtask = ({ currentPage }) => {
         setTaskTime('');
         setTaskDate(''); 
     }
-
+      //reponsible for updating all-task state 
     useEffect(() => {
         const AllTasks = Object.values(tasks).flat()
         setAllTasks(AllTasks)
@@ -22,6 +23,7 @@ const Addtask = ({ currentPage }) => {
 
   return (
       <>
+          {/* form to accept user information */}
           <div>
               <form action="" onSubmit={(e) => handleSubmit(e, currentPage,taskValue, taskDate, taskTime )}>
                   <input type="text" value={taskValue} placeholder='Type something "Pay Utilites bill by friday 2pm" ' onChange={(e) => setTaskValue(e.target.value)} required/>

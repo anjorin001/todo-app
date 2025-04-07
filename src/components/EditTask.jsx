@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Task } from './TaskContext'
 import { useContext } from 'react'
 const EditTask = ({taskId, currentPage}) => {
     const { setTasks, tasks } = useContext(Task)
-    const [presentTaskValue, setPresentTaskValue] = useState('')
-    const [presentTaskDate, setPresentTaskDate] = useState('')
-    const [presentTaskTime, setPresentTaskTime] = useState('')
-    const [defaultValue, setDefaultValue] = useState({
-        Taskvalue: '',
-        DateValue: '',
-        TimeValue: '',
-    });
-    
+    const { presentTaskValue, setPresentTaskValue, presentTaskDate, setPresentTaskDate, presentTaskTime, setPresentTaskTime, defaultValue, setDefaultValue } = useContext(Task)
+//    responsible for showing default values before editing task
     const handleDefaultValue = () => {
         const taskToEdit = tasks[currentPage].find(task => task.id === taskId);
     
@@ -27,7 +20,7 @@ const EditTask = ({taskId, currentPage}) => {
         handleDefaultValue()
     }, [taskId])
     
-
+// responsible for editing added task by making use of the id
     const handleEdit = (e, page, newTaskText, newTaskDate, newTaskTime) => {
         e.preventDefault()
         setTasks((prevTask) => ({
@@ -46,6 +39,7 @@ const EditTask = ({taskId, currentPage}) => {
     }
   return (
       <>
+          {/* form for requesting new task info  */}
           <form action="" onSubmit={(e) => handleEdit(e, currentPage,presentTaskValue, presentTaskDate, presentTaskTime )}>
                   <input type="text" defaultValue={defaultValue.Taskvalue}  placeholder='Type something "Pay Utilites bill by friday 2pm" ' onChange={(e) => setPresentTaskValue(e.target.value)} required/>
                   <input type="date" defaultValue={defaultValue.DateValue} onChange={(e) => setPresentTaskDate(e.target.value)} required />
