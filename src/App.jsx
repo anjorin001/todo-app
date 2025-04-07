@@ -10,8 +10,6 @@ import Tasks from './pages/Tasks';
 const App = () => {
   return (
     <>
-      
-        
           {/* TaskContext here is a usecontext allowing all components to have access-- read NOTE file */}
         <TaskContext>
           {/* all routes,route and component instances should be placed here */}
@@ -26,8 +24,6 @@ const App = () => {
                </Routes>
           
         </TaskContext>
-        
-      
     </>
   )
 }
