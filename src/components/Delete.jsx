@@ -1,8 +1,11 @@
 import React from "react";
+import { Task } from './TaskContext'
 
-const Delete = ({taskId}) => {
+const Delete = ({taskId, page}) => {
 
-    const handleDelete = (e, page) => {
+    const {tasks, setTasks} = React.useContext(Task)
+
+    const handleDelete = (e) => {
         e.preventDefault()
         setTasks((prevTask) => ({
             ...prevTask,
@@ -11,7 +14,7 @@ const Delete = ({taskId}) => {
     }
     
 return(
-    <></>
+  <></>
 )
 }
 
