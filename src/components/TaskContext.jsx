@@ -12,7 +12,7 @@ const TaskContext = ({ children }) => {
         "task-page2": [],
         "task-page3": [],
         "task-page4": [],
-        "completed-task":[],
+        "alltask-page": [],
     })
   // all state for editing task
     const [presentTaskValue, setPresentTaskValue] = useState('')

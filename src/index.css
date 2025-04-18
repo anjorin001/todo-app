@@ -189,112 +189,195 @@ body{
   
 }
 
-.auth-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #242426;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.auth-title {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.auth-input {
-  padding: 12px 16px;
-  border: 1px solid #3d3d3e;
-  border-radius: 4px;
-  background-color: #141414;
-  color: #fff;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-
-.auth-input:focus {
-  outline: none;
-  border-color: #555;
-}
-
-.auth-button {
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.auth-button.primary {
-  background-color: #4285f4;
-  color: white;
-}
-
-.auth-button.primary:hover {
-  background-color: #3367d6;
-}
-
-.auth-button.google {
-  background-color: #fff;
-  color: #3d3d3e;
-  border: 1px solid #3d3d3e;
-}
-
-.auth-button.google:hover {
-  background-color: #f5f5f5;
-}
-
-.auth-divider {
-  display: flex;
-  align-items: center;
-  margin: 1.5rem 0;
-  color: #3d3d3e;
-}
-
-.auth-divider::before,
-.auth-divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #3d3d3e;
-}
-
-.divider-text {
-  padding: 0 1rem;
-}
-
-.auth-message {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: 4px;
-  background-color: rgba(66, 133, 244, 0.1);
-  color: #fff;
-  text-align: center;
-}
-
-.google-icon {
-  margin-right: 8px;
-}
 
 .signup{
   background-color: #141414;
   height: calc(100vh - 25px);
   border-top-left-radius: 10px ;
   padding: 40px;
+}
+
+
+/* signup login */
+/* Base Styles */
+.auth-page{
+  background-color: #141414;
+  height: calc(130vh);
+  border-top-left-radius: 10px ;
+  padding: 40px;
+}
+.auth-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 2.5rem;
+  background: #242426;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.form-title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: #141414;
+  border: 1px solid #3d3d3e;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.form-input::placeholder {
+  color: #6d6d6f;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-btn:hover {
+  background: #3367d6;
+}
+
+.btn-loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: #3d3d3e;
+}
+
+.divider-text {
+  padding: 0 1rem;
+  color: #9e9e9e;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+/* Google Auth */
+.google-auth-wrapper {
+  margin: 1rem 0 1.5rem;
+}
+.auth-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.auth-button.google {
+  background: white;
+  color: #3d3d3e;
+  border: 1px solid #d6d6d6;
+}
+
+.auth-button.google:hover {
+  background: #f5f5f5;
+}
+
+.google-icon {
+  margin-right: 8px;
+}
+
+/* Messages */
+.auth-message {
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-message.error {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+.auth-message.success {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+/* Switch Link */
+.auth-switch {
+  color: #b0b0b0;
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+}
+
+.auth-link {
+  color: #4285f4;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+  color: #5b9bff;
+  text-decoration: underline;
 }
 /* Tasks view */
 .main-content {
@@ -313,4 +396,74 @@ body{
   font-size: 2rem;
   font-weight: bold;
   gap: 0.5rem;
+}
+.add-task{width: 100%;}
+.add-task form{
+   display: flex;
+   align-items: center;
+   width: 100%;
+   /* justify-content: space-between; */
+   background-color: #3d3d3e;
+   padding: 10px;
+   border-radius: 5px;
+}
+.task-action{
+  display: flex;
+  align-items: center;
+  width: 70%;
+  gap: 5px;
+}
+.plus, .circle{
+   font-weight: 100;
+   transition: 0.5s;
+   color: rgb(0, 255, 17);
+}
+.task-action input{
+  width: 100%;
+  /* height: 30px; */
+  border-color:#3d3d3e;
+}
+.task-action input:focus{
+  width: 100%;
+  /* height: 30px; */
+  outline: none;
+  border-color:#3d3d3e;
+}
+.bottom-add-task-input{
+  position: fixed;
+  bottom: 0;
+  left: 60%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for exact center */
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  z-index: 100;
+ 
+}
+.task-scroll-container {
+  max-height: 65vh; /* or any fixed height you want */
+  overflow-y: auto;
+  padding-right: 4px; /* optional, for spacing scrollbar */
+}
+.task-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+.task-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 10px;
+}
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.task-line {
+  border-bottom: 1px solid #444;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  color: white;
 }
