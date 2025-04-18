@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
 import { useNavigate } from "react-router-dom";
-import { LogIn } from "lucide-react";
+import { User } from 'lucide-react';
 const LoggedUser = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -49,8 +49,8 @@ const LoggedUser = () => {
           </div>
         </div>
       ) : (
-        <button onClick={() => navigate("/signup")}>
-          SignUp <LogIn />{" "}
+        <button onClick={() => navigate("/login")}>
+         Create Account <User/>
         </button>
       )}
       {user && <button onClick={handleLogout}>logout</button>}

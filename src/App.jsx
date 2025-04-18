@@ -7,7 +7,8 @@ import Important from "./pages/Important";
 import MyDay from "./pages/MyDay";
 import Planned from "./pages/Planned";
 import Tasks from "./pages/Tasks";
-import Auth from "./auth/Auth";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 const App = () => {
   return (
     <>
@@ -22,7 +23,8 @@ const App = () => {
           <Route path="/my-day" element={<MyDay />} />
           <Route path="/planned" element={<Planned />} />
           <Route path="/tasks" element={<Tasks />} />
-          <Route path="/signup" element={<Auth />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </TaskContext>
     </>
