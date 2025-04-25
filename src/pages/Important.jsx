@@ -19,6 +19,9 @@ export const Important = () => {
          <Star className='star'/>  Important
         </h1>
         <span>{today}</span>
+
+         {/* mapping through the tasks */}
+
         <div className="task-scroll-container ">
           { <ul className="task-list">
             {lines.map((_, i) => (
