@@ -4,9 +4,9 @@ import Addtask from "@/components/Addtask";
 import { useContext } from "react";
 import { Task } from "@/components/TaskContext";
 const Tasks = () => {
-  const { tasks } = useContext(Task);
+  const { AllTasks } = useContext(Task);
   const page = 'alltask-page'
-  const lines = Array.from({ length: tasks[page].length + 7 });
+  const lines = Array.from({ length: AllTasks.length + 7 });
   const today = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -22,11 +22,11 @@ const Tasks = () => {
         <div className="task-scroll-container">{ <ul className="task-list">
             {lines.map((_, i) => (
               <li key={i} className="task-line">
-                {tasks[page][i] ? (
+                {AllTasks [i] ? (
                   <>
-                    <p>{tasks[page][i].text}</p>
+                    <p>{AllTasks [i].text}</p>
                     <p>
-                      {tasks[page][i].date}  {tasks[page][i].time}
+                      {AllTasks [i].date}  {AllTasks[i].time}
                     </p>
                   </>
                 ) : (
