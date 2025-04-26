@@ -12,6 +12,6 @@ Example:
     import  useContext from 'react'
     in your function:
     const {task, setTask} = useContext(Task) // you destruct the varaible you need e.g allTask...
-    Now you can make use of task values and modify task with setask in your component :)
+    Now you can make use of task values and modify task with setask in your component :
 )
 ------------------------------------------------------------------------------------------------------------

@@ -12,7 +12,6 @@ import Login from "./pages/Login";
 const App = () => {
   return (
     <>
-      {/* TaskContext here is a usecontext allowing all components to have access-- read NOTE file */}
       <TaskContext>
         {/* all routes,route and component instances should be placed here */}
 
