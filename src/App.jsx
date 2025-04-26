@@ -6,11 +6,10 @@ const App = () => {
     <div>
       <TaskContext>
         <Example/>
-      </TaskContext>
+       </TaskContext>
     </div>
   )
 }
-
 export default App
 
 // import React from 'react'

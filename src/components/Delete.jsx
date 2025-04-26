@@ -1,21 +1,21 @@
-import React from "react";
-import { Task } from './TaskContext'
+import React, { useState, useEffect, useContext } from "react";
+import { Task } from './TaskContext';
 
-const Delete = ({taskId, page}) => {
+const Delete = ({ taskId, page }) => {
+    const { setTasks } = useContext(Task);
 
-    const {tasks, setTasks} = React.useContext(Task)
+    const handleDelete = () => {
+        setTasks((prevTasks) => ({
+            ...prevTasks,
+            [page]: prevTasks[page].filter((task) => task.id !== taskId)
+        }));
+    };
 
-    const handleDelete = (e) => {
-        e.preventDefault()
-        setTasks((prevTask) => ({
-            ...prevTask,
-            [page]: prevTask[page].filter((task) => task.id !== taskId)
-        }))
-    }
-    
-return(
-  <></>
-)
-}
+    useEffect(() => {
+        handleDelete();
+    }, [taskId, page]); 
 
-export default Delete
+    return null; 
+};
+
+export default Delete;
