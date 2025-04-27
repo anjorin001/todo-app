@@ -536,3 +536,134 @@ body {
   background-color: #b1aeae;
   color: #141414;
 }
+
+
+/* edit task css */
+/* Overlay with frosted glass effect */
+.edit-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(20, 20, 20, 0.7); /* #141414 with 70% opacity */
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding-left: 250px; /* Adjust based on your sidebar width */
+}
+
+/* Form container */
+.edit-form-container {
+  background: rgba(36, 36, 38, 0.85); /* #242426 with 85% opacity */
+  border-radius: 12px;
+  padding: 2rem;
+  width: 50%;
+  max-width: 500px;
+  border: 1px solid #3d3d3e;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Form elements */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-input {
+  background: rgba(20, 20, 20, 0.7); /* #141414 with 70% opacity */
+  border: 1px solid #3d3d3e;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+}
+
+.datetime-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.datetime-group .form-group {
+  flex: 1;
+}
+
+label {
+  color: #ccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.submit-btn {
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+  background: #3367d6;
+}
+
+/* Date/Time input styling for modern browsers */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+  cursor: pointer;
+  padding: 0.2rem;
+}
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancel-btn {
+  background-color: #06388e;
+  color: #ccc;
+  border: none;
+  border-radius: 8px;
+  /* padding:5px 40px; */
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.cancel-btn:hover {
+  background:#012563 ;
+  color: white;
+}
+
+.edit-form-overlay {
+  cursor: pointer;
+}
+
+.edit-form-container {
+  cursor: default;
+}

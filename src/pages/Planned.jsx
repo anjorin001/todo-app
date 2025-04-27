@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { Task } from "@/components/TaskContext";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useRef } from "react";
+import Delete from "@/components/Delete";
+import EditTask from "@/components/EditTask";
 const Planned = () => {
     const { tasks } = useContext(Task);
     const page = "task-page3";
@@ -100,7 +102,10 @@ const Planned = () => {
             <p className="separator"></p>
           <div onClick={(e) =>  handleIdPass(e,menu.todoId,'delete')}>Delete</div>
         </div>
-      )}
+        )}
+        {/* DELETE AND EDIT AND COMPLETE LOGIC */}
+        {idHolder.type === 'delete' && <Delete taskId={idHolder.id} page={page}  /> }
+        {idHolder.type === 'edit' && <EditTask taskId={idHolder.id} currentPage={page}  onClose={() => setIdHolder({id:null})}  /> }
          {/* ADDTASK INPUT */}
          <div className="bottom-add-task-input">
           <Addtask currentPage={page} />

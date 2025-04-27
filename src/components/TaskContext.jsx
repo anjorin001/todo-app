@@ -3,7 +3,7 @@ import { createContext } from "react";
 export const Task = createContext();
 const TaskContext = ({ children }) => {
   // All state for adding task
-    const [AllTasks, setAllTasks ] = useState([])
+    const [AllTasks, setAllTasks ] = useState({})
     const [taskValue, setTaskValue] = useState('')
     const [taskDate, setTaskDate] = useState('')
     const [taskTime, setTaskTime] = useState('')

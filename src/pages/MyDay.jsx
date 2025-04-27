@@ -6,6 +6,8 @@ import { Task } from "@/components/TaskContext";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useRef } from "react";
 import { useEffect } from "react";
+import Delete from "@/components/Delete";
+import EditTask from "@/components/EditTask";
 const MyDay = () => {
   const { tasks } = useContext(Task);
   const page = "task-page1";
@@ -24,9 +26,6 @@ const MyDay = () => {
     e.preventDefault();
     setIdHolder({ id, type })
     setMenu({ ...menu, visible: false });
-  }
-  if (idHolder.type === 'check'||idHolder.type === 'delete' ||idHolder.type === 'edit') {
-    console.log(`type: ${idHolder.type} id: ${idHolder.id}`);
   }
   // HERE BELOW IS THE CONTEXT_MENUE CODE GUYS
   const [menu, setMenu] = useState({
@@ -108,7 +107,10 @@ const MyDay = () => {
             <p className="separator"></p>
           <div onClick={(e) =>  handleIdPass(e,menu.todoId,'delete')}>Delete</div>
         </div>
-      )}
+        )}
+        {/* DELETE AND EDIT AND COMPLETE LOGIC */}
+        {idHolder.type === 'delete' && <Delete taskId={idHolder.id} page={page}  /> }
+        {idHolder.type === 'edit' && <EditTask taskId={idHolder.id} currentPage={page}  onClose={() => setIdHolder({id:null})}  /> }
         {/* ADDTASK INPUT */}
         <div className="bottom-add-task-input">
           <Addtask currentPage={page} />

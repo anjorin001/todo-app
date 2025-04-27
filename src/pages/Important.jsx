@@ -5,6 +5,8 @@ import { Task } from "@/components/TaskContext";
 import { useContext } from "react";
 import { useRef } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
+import Delete from "@/components/Delete";
+import EditTask from "@/components/EditTask";
 export const Important = () => {
   const { tasks } = useContext(Task);
   const page = "task-page2";
@@ -123,6 +125,8 @@ export const Important = () => {
             </div>
           </div>
         )}
+        {idHolder.type === 'delete' && <Delete taskId={idHolder.id} page={page}  /> }
+        {idHolder.type === 'edit' && <EditTask taskId={idHolder.id} currentPage={page}  onClose={() => setIdHolder({id:null})}  /> }
         {/* ADDTASK INPUT */}
         <div className="bottom-add-task-input">
           <Addtask currentPage={page} />

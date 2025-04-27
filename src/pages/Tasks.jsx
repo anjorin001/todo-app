@@ -6,6 +6,8 @@ import { Task } from "@/components/TaskContext";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useRef } from "react";
 import { useEffect } from "react";
+import Delete from "@/components/Delete";
+
 const Tasks = () => {
   const { AllTasks } = useContext(Task);
   const page = 'alltask-page'
@@ -13,31 +15,32 @@ const Tasks = () => {
   const [idHolder, setIdHolder] = useState({
       id: null,
       type: null,
+      deletePage: null
     })
   
-    const handleIdPass = (e, id, type) => {
+    const handleIdPass = (e, id, type, deletePage) => {
       e.preventDefault();
-      setIdHolder({ id, type })
+      setIdHolder({ id, type, deletePage })
       setMenu({ ...menu, visible: false });
     }
-    if (idHolder.type === 'check'||idHolder.type === 'delete' ||idHolder.type === 'edit') {
-      console.log(`type: ${idHolder.type} id: ${idHolder.id}`);
-    }
+
     // HERE BELOW IS THE CONTEXT_MENUE CODE GUYS
     const [menu, setMenu] = useState({
       visible: false,
       x: 0,
       y: 0,
-      todoId: null
+      todoId: null,
+      deletePage:null
     });
     const menuRef = useRef();
-    const handleContextMenu = (e, todoId) => {
+    const handleContextMenu = (e, todoId, deletePage) => {
       e.preventDefault();
       setMenu({
         visible: true,
         x: e.clientX,
         y: e.clientY,
-        todoId
+        todoId,
+        deletePage
       });
     };
     
@@ -66,7 +69,7 @@ const Tasks = () => {
             {lines.map((_, i) => (
               <li key={i} className="task-line">
                 {AllTasks[i] ? (
-                  <div className="task-display-container"  onContextMenu={(e) => handleContextMenu(e, AllTasks[i].id)}>
+                  <div className="task-display-container"  onContextMenu={(e) => handleContextMenu(e, AllTasks[i].id, AllTasks[i].page)}>
                     <div className="task-value">
                       <div onClick={(e) => handleIdPass(e,AllTasks[i].id,'check')}><Checkbox/></div>
                       <p>
@@ -99,9 +102,11 @@ const Tasks = () => {
         >
             <div onClick={(e) => handleIdPass(e, menu.todoId, 'edit')}>Edit</div>
             <p className="separator"></p>
-          <div onClick={(e) =>  handleIdPass(e,menu.todoId,'delete')}>Delete</div>
+          <div onClick={(e) =>  handleIdPass(e,menu.todoId,'delete',menu.deletePage)}>Delete</div>
         </div>
-      )}
+        )}
+         {/* DELETE AND EDIT AND COMPLETE LOGIC */}
+         {idHolder.type === 'delete' && <Delete taskId={idHolder.id} page={page} deletePage={idHolder.deletePage} /> }
         {/* ADDTASK INPUT */}
         <div className="bottom-add-task-input">
           <Addtask currentPage={page} />
@@ -110,5 +115,4 @@ const Tasks = () => {
     </div>
   );
 };
-
 export default Tasks;
