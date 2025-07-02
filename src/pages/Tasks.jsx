@@ -66,6 +66,11 @@ const Tasks = () => {
       };
     }, []);
   
+  console.log({
+    id: idHolder.id,
+    deletePage: idHolder.manipulatePage
+  })
+  
   // ENDING OF MENUE 
   return (
     <div className="main-content">
@@ -133,14 +138,14 @@ const Tasks = () => {
             top: `${menu.y}px`,
           }}
         >
-            <div onClick={(e) => handleIdPass(e, menu.todoId, 'edit')}>Edit</div>
+            <div onClick={(e) => handleIdPass(e, menu.todoId, 'edit', menu.manipulatePage)}>Edit</div>
             <p className="separator"></p>
           <div onClick={(e) =>  handleIdPass(e,menu.todoId,'delete',menu.manipulatePage)}>Delete</div>
         </div>
         )}
          {/* DELETE AND EDIT AND COMPLETE LOGIC */}
-         {idHolder.type === 'delete' && <Delete taskId={idHolder.id} page={page} deletePage={idHolder.manipulatePage} /> }
-        {idHolder.type === 'edit' && <EditTask taskId={idHolder.id} currentPage={page} onClose={() => setIdHolder({ id: null })} />}
+        {idHolder.type === 'delete' && <Delete taskId={idHolder.id} page={page} deletePage={idHolder.manipulatePage} /> }
+        {idHolder.type === 'edit' && <EditTask taskId={idHolder.id} currentPage={page} deletePage={idHolder.manipulatePage} onClose={() => setIdHolder({ id: null })} />}
         {idHolder.type === 'check' &&  <CompletedTask taskId={idHolder.id} page={page} deletePage={idHolder.manipulatePage} />}
         {/* ADDTASK INPUT */}
         <div className="bottom-add-task-input">
