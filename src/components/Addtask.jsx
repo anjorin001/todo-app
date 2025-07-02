@@ -38,7 +38,7 @@ const Addtask = ({ currentPage }) => {
         <div className='add-task'>
             <form action="" onSubmit={(e) => handleSubmit(e, currentPage, taskValue, taskDate, taskTime)}>
                <div className='task-action'>
-                   {taskValue ? <button type='submit'><Plus className='plus'/></button> : <Circle className='circle'/>}    
+                   {taskValue ? <button type='submit' title='Add Task'><Plus  className='plus'/></button> : <Circle className='circle'/>}    
                   <input type="text" value={taskValue} placeholder='Type something "Pay Utilites bill by friday 2pm" ' onChange={(e) => setTaskValue(e.target.value)} required />
                 </div>
                 <div className='task-period'>

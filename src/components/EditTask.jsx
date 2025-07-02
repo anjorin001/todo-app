@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Task } from "./TaskContext";
 import { useContext } from "react";
 
-const EditTask = ({ taskId, currentPage, onClose }) => {
+const EditTask = ({ taskId, currentPage, onClose, deletePage }) => {
   const { setTasks, tasks } = useContext(Task);
   const {
     presentTaskValue,
@@ -14,7 +14,7 @@ const EditTask = ({ taskId, currentPage, onClose }) => {
     defaultValue,
     setDefaultValue,
   } = useContext(Task);
-  
+
   const [isVisible, setIsVisible] = useState(true);
 
   // Responsible for showing default values before editing task
@@ -36,20 +36,37 @@ const EditTask = ({ taskId, currentPage, onClose }) => {
   // Responsible for editing added task by making use of the id
   const handleEdit = (e, page, newTaskText, newTaskDate, newTaskTime) => {
     e.preventDefault();
-    setTasks((prevTask) => ({
-      ...prevTask,
-      [page]: prevTask[page].map((task) =>
-        task.id === taskId
-          ? {
-              ...task,
-              text: newTaskText || task.text,
-              date: newTaskDate || task.date,
-              time: newTaskTime || task.time,
-              completed: false,
-            }
-          : task
-      ),
-    }));
+    if (page === "alltask-page") {
+      setTasks((prevTask) => ({
+        ...prevTask,
+        [deletePage]: prevTask[deletePage].map((task) =>
+          task.id === taskId
+            ? {
+                ...task,
+                text: newTaskText || task.text,
+                date: newTaskDate || task.date,
+                time: newTaskTime || task.time,
+                completed: false,
+              }
+            : task
+        ),
+      }));
+    } else {
+      setTasks((prevTask) => ({
+        ...prevTask,
+        [page]: prevTask[page].map((task) =>
+          task.id === taskId
+            ? {
+                ...task,
+                text: newTaskText || task.text,
+                date: newTaskDate || task.date,
+                time: newTaskTime || task.time,
+                completed: false,
+              }
+            : task
+        ),
+      }));
+    }
 
     setDefaultValue({
       Taskvalue: "",
@@ -66,8 +83,8 @@ const EditTask = ({ taskId, currentPage, onClose }) => {
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       setIsVisible(false);
-        if (onClose) onClose();
-    setDefaultValue({
+      if (onClose) onClose();
+      setDefaultValue({
         Taskvalue: "",
         DateValue: "",
         TimeValue: "",
@@ -129,8 +146,8 @@ const EditTask = ({ taskId, currentPage, onClose }) => {
             <button type="submit" className="submit-btn">
               Save Changes
             </button>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="cancel-btn"
               onClick={() => {
                 setIsVisible(false);
