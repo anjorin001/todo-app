@@ -7,8 +7,10 @@ import { useRef } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import Delete from "@/components/Delete";
 import EditTask from "@/components/EditTask";
+import { CompletedTask } from "@/components/CompletedTask";
+
 export const Important = () => {
-  const { tasks } = useContext(Task);
+  const { tasks,fadingTaskId } = useContext(Task);
   const page = "task-page2";
   const lines = Array.from({ length: tasks[page].length + 7 });
   const [idHolder, setIdHolder] = useState({
@@ -74,12 +76,7 @@ export const Important = () => {
             {lines.map((_, i) => (
               <li key={i} className="task-line">
                 {tasks[page][i] ? (
-                  <div
-                    className="task-display-container"
-                    onContextMenu={(e) =>
-                      handleContextMenu(e, tasks[page][i].id)
-                    }
-                  >
+                  <div className={`task-display-container ${fadingTaskId === tasks[page][i].id ? 'fade-out' : ''}`}  onContextMenu={(e) => handleContextMenu(e, tasks[page][i].id)}>
                     <div className="task-value">
                       <div
                         onClick={(e) =>
@@ -127,6 +124,7 @@ export const Important = () => {
         )}
         {idHolder.type === 'delete' && <Delete taskId={idHolder.id} page={page}  /> }
         {idHolder.type === 'edit' && <EditTask taskId={idHolder.id} currentPage={page}  onClose={() => setIdHolder({id:null})}  /> }
+        {idHolder.type === 'check' &&  <CompletedTask taskId={idHolder.id} page={page} deletePage={idHolder.manipulatePage} />}
         {/* ADDTASK INPUT */}
         <div className="bottom-add-task-input">
           <Addtask currentPage={page} />
