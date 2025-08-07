@@ -1,6 +1,9 @@
 import loginRequest from "@/auth/login";
 import GoogleAuth from "@/components/googleAuth";
-import React, { useState } from "react";
+import { Task } from "@/components/TaskContext";
+import UserLoader from "@/components/userLoader";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -8,6 +11,8 @@ const Login = () => {
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { user } = useContext(Task);
+  const navigate = useNavigate()
 
   const loginData = {
     email,
@@ -18,12 +23,29 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     const response = await loginRequest(loginData);
-    const { status, message, data } = response
+    const { status, message, data } = response;
     setMessage(status === "error" ? message : "Login successfully");
     setMessageType(status === "error" ? "error" : "success");
     localStorage.setItem("token", data?.token);
     setLoading(false);
   };
+
+  console.log(messageType)
+  if (messageType === "success") {
+    (async () => {
+    <UserLoader />
+    })();
+  }
+
+console.log("user", user)
+  useEffect(() => {
+    if (user) {
+      navigate("/profile");
+    }
+  }, [user]); 
+
+
+  console.log(user)
 
   return (
     <>
@@ -77,7 +99,7 @@ const Login = () => {
               type="submit"
               className="w-full px-4 py-3 bg-blue-600 text-white border-none rounded-lg text-base font-semibold cursor-pointer mt-2 transition-colors duration-200 hover:bg-blue-700 flex justify-center items-center"
             >
-              {loading  ? (
+              {loading ? (
                 <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>
               ) : (
                 "Login"

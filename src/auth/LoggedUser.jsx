@@ -1,43 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { User } from 'lucide-react';
+import { User } from "lucide-react";
+import { Task } from "@/components/TaskContext";
+import ProfilePage from "@/pages/Profile";
+import UserLoader from "@/components/UserLoader";
+
 const LoggedUser = () => {
-  const [user, setUser] = useState(null);
+  const { user, setShowProfile } = useContext(Task);
   const navigate = useNavigate();
+
   useEffect(() => {
-   
+    <UserLoader />;
   }, []);
 
-  const handleLogout = async () => {
-
-  };
-
-  useEffect(() => {
-    console.log(user);
-  });
-  return (
-    <div className="account">
-      {user ? (
-        <div className="account-info">
-          <div className="account-img">
-            <img
-              src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbQ5zPfVq1W2O-oF2aEeooqECCaNAuwHATng&s'}
-              alt="Profile"
-              style={{ width: 50, height: 50, borderRadius: "50%" }}
-            />
-          </div>
-          <div className="account-name">
-            <p>{user?.user_metadata?.full_name}</p> <p className="truncate max-w-[180px] overflow-hidden whitespace-nowrap text-ellipsis">{user.email}</p>
-          </div>
-        </div>
-      ) : (
-        <button onClick={() => navigate("/login")}>
-         Create Account <User/>
+  // If no user, show login button
+  if (!user) {
+    return (
+      <div className="m-4">
+        <button
+          onClick={() => navigate("/login")}
+          className="flex items-center gap-2 mt-1.5 px-1.5 py-1 rounded text-white hover:opacity-90 transition-opacity"
+          style={{ backgroundColor: "#39393d" }}
+        >
+          Profile <User size={16} />
         </button>
-      )}
-      {user && <button onClick={handleLogout}>logout</button>}
+      </div>
+    );
+  }
+
+  // If user exists, show profile page button
+  return (
+    <div className="m-4">
+      <button
+        onClick={() => {
+          setShowProfile(true);
+          navigate("/profile");
+        }}
+        className="flex items-center gap-2 mt-1.5 px-1.5 py-1 rounded text-white hover:opacity-90 transition-opacity"
+        style={{ backgroundColor: "#39393d" }}
+      >
+        Profile <User size={16} />
+      </button>
     </div>
   );
 };
 
 export default LoggedUser;
+
+// style={{ backgroundColor: '#39393d' }}
+// TODO  so this is what to do --- create another page that wpu render user asic information username email -- chngae pawwwrdo also .
