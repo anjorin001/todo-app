@@ -116,7 +116,7 @@
 }
 
 /* Do not delete whats above */
-body{
+body {
   color: white;
   box-sizing: border-box;
   background-color: #242426;
@@ -154,28 +154,37 @@ body{
 }
 
 .nav:hover {
-  background-color:#3d3d3e ;
+  background-color: #3d3d3e;
   transform: translateX(5px);
 }
-.sun{color: rgb(120, 142, 139);}
-.star{ color: pink;}
-.column{ color: blue;}
-.circleUser{ color: green;}
-.house{ color: rgb(112, 112, 241);}
-
+.sun {
+  color: rgb(120, 142, 139);
+}
+.star {
+  color: pink;
+}
+.column {
+  color: blue;
+}
+.circleUser {
+  color: green;
+}
+.house {
+  color: rgb(112, 112, 241);
+}
 
 /* accout sect */
-.user-account{
+.user-account {
   margin: 15px;
 }
-.account-info{
+.account-info {
   display: flex;
   width: 100%;
 }
-.account-img{
+.account-img {
   width: 30%;
 }
-.account-name{
+.account-name {
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -186,24 +195,21 @@ body{
   margin-top: 6px;
   padding: 3px 6px;
   border-radius: 5px;
-  
 }
 
-
-.signup{
+.signup {
   background-color: #141414;
   height: calc(100vh - 25px);
-  border-top-left-radius: 10px ;
+  border-top-left-radius: 10px;
   padding: 40px;
 }
 
-
 /* signup login */
 /* Base Styles */
-.auth-page{
+.auth-page {
   background-color: #141414;
   height: calc(130vh);
-  border-top-left-radius: 10px ;
+  border-top-left-radius: 10px;
   padding: 40px;
 }
 .auth-container {
@@ -287,7 +293,9 @@ body{
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Divider */
@@ -384,11 +392,13 @@ body{
   margin-left: 250px;
   padding-top: 25px;
 }
-.task-content{
+.task-content {
   background-color: #141414;
   height: calc(100vh - 25px);
-  border-top-left-radius: 10px ;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 40px;
+  margin-right: 20px;
 }
 .heading {
   display: flex;
@@ -397,52 +407,57 @@ body{
   font-weight: bold;
   gap: 0.5rem;
 }
-.add-task{width: 100%;}
-.add-task form{
-   display: flex;
-   align-items: center;
-   width: 100%;
-   /* justify-content: space-between; */
-   background-color: #3d3d3e;
-   padding: 10px;
-   border-radius: 5px;
+.add-task {
+  width: 100%;
 }
-.task-action{
+.add-task form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* justify-content: space-between; */
+  background-color: #3d3d3e;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+.task-action {
   display: flex;
   align-items: center;
   width: 70%;
   gap: 5px;
 }
-.plus, .circle{
-   font-weight: 100;
-   transition: 0.5s;
-   color: rgb(0, 255, 17);
+.task-action button{
+  cursor: pointer;
 }
-.task-action input{
-  width: 100%;
-  /* height: 30px; */
-  border-color:#3d3d3e;
+.plus,
+.circle {
+  font-weight: 100;
+  transition: 0.5s;
+  color: rgb(0, 255, 17);
 }
-.task-action input:focus{
+.task-action input {
+  width: 60%;
+  border-color: #3d3d3e;
+}
+.task-action input:focus {
   width: 100%;
-  /* height: 30px; */
   outline: none;
-  border-color:#3d3d3e;
+  border-color: #3d3d3e;
 }
-.bottom-add-task-input{
+.bottom-add-task-input {
   position: fixed;
   bottom: 0;
   left: 60%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for exact center */
-  width: 75%;
+  width: 70%;
   display: flex;
   justify-content: center;
   padding: 10px;
   z-index: 100;
- 
 }
 .task-scroll-container {
-  max-height: 65vh; /* or any fixed height you want */
+  max-height: 60vh; /* or any fixed height you want */
   overflow-y: auto;
   padding-right: 4px; /* optional, for spacing scrollbar */
 }
@@ -450,7 +465,7 @@ body{
   width: 6px;
 }
 .task-scroll-container::-webkit-scrollbar-thumb {
-  background-color: #999;
+  background-color: #141414;
   border-radius: 10px;
 }
 .task-list {
@@ -462,8 +477,227 @@ body{
 .task-line {
   border-bottom: 1px solid #444;
   min-height: 48px;
-  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   color: white;
 }
+.task-value,
+.task-time,
+.task-display-container {
+  display: flex;
+}
+.task-display-container {
+  background-color: #242426;
+  width: 100%;
+  height: inherit;
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: space-between;
+  cursor: context-menu;
+}
+.task-value {
+  gap: 10px;
+}
+.task-time {
+  font-size: 12px;
+}
+.completed-sec{
+  background-color: #323131;
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  width: fit-content;
+  padding: 3px;
+  margin-top: 4px;
+  border-radius: 5px;
+  color: gray;
+}
+.completed{
+  text-decoration: line-through;
+  color: #7e7e81;
+}
+.trash{
+  cursor: pointer;
+  font-size: 10px;
+  color:#929191;
+}
+/* TESTING CONTEXT MENUE */
+.context-menu {
+  position: fixed;
+  background: #141414;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(173, 163, 163, 0.087);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  pointer-events: none;
+}
+
+.context-menu.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.context-menu div {
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+.separator {
+  height: 0.5px;
+  background-color: #eee;
+  margin: 0;
+  width: 100%;
+}
+
+.context-menu div:hover {
+  background-color: #b1aeae;
+  color: #141414;
+}
+
+
+/* edit task css */
+/* Overlay with frosted glass effect */
+.edit-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(20, 20, 20, 0.7); /* #141414 with 70% opacity */
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding-left: 250px; /* Adjust based on your sidebar width */
+}
+
+/* Form container */
+.edit-form-container {
+  background: rgba(36, 36, 38, 0.85); /* #242426 with 85% opacity */
+  border-radius: 12px;
+  padding: 2rem;
+  width: 50%;
+  max-width: 500px;
+  border: 1px solid #3d3d3e;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Form elements */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-input {
+  background: rgba(20, 20, 20, 0.7); /* #141414 with 70% opacity */
+  border: 1px solid #3d3d3e;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+}
+
+.datetime-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.datetime-group .form-group {
+  flex: 1;
+}
+
+label {
+  color: #ccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.submit-btn {
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+  background: #3367d6;
+}
+
+/* Date/Time input styling for modern browsers */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+  cursor: pointer;
+  padding: 0.2rem;
+}
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancel-btn {
+  background-color: #06388e;
+  color: #ccc;
+  border: none;
+  border-radius: 8px;
+  /* padding:5px 40px; */
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.cancel-btn:hover {
+  background:#012563 ;
+  color: white;
+}
+
+.edit-form-overlay {
+  cursor: pointer;
+}
+
+.edit-form-container {
+  cursor: default;
+}
+
+/* transition for complete tasK */
+.fade-out {
+  opacity: 0;
+  transform: rotateX(90deg);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transform-origin: top;
+}
+
+
+
+
