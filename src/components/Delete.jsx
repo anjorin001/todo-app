@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from "react";
-import { Task } from "./TaskContext";
+import React, { useState, useEffect, useContext } from "react";
+import { Task } from './TaskContext';
 
 const Delete = ({ taskId, page, deletePage }) => {
   const { setTasks,setFadingTaskId } = useContext(Task);
