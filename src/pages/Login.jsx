@@ -1,5 +1,5 @@
 import loginRequest from "@/auth/login";
-import GoogleAuth from "@/components/googleAuth";
+import GoogleAuth from "@/components/GoogleAuth";
 import { Task } from "@/components/TaskContext";
 import UserLoader from "@/components/UserLoader";
 import { useContext, useEffect, useState } from "react";
