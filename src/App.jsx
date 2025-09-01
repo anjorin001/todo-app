@@ -9,7 +9,6 @@ import Planned from "./pages/Planned";
 import Tasks from "./pages/Tasks";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import UserLoader from "./components/userLoader";
 import ProfilePage from "./pages/Profile";
 const App = () => {
   return (
