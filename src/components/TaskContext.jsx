@@ -30,6 +30,10 @@ const TaskContext = ({ children }) => {
     TimeValue: "",
   });
 
+
+  // users
+  const [user , setUser] = useState(null)
+ const [showProfile, setShowProfile] = useState(false);
   return (
     <>
       {/* responsible sharing all state to all component who needs it */}
@@ -56,7 +60,11 @@ const TaskContext = ({ children }) => {
           completedTask,
           setCompletedTask,
           fadingTaskId,
-          setFadingTaskId
+          setFadingTaskId,
+          user,
+          setUser,
+          showProfile,
+          setShowProfile
         }}
       >
         {children}

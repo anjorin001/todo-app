@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+
 const api = axios.create({
-  baseURL: 'https://taskly-rz03.onrender.com/api/v1',
+  baseURL: import.meta.env.VITE_BASEURL,
 });
 
 // Automatically attach token from localStorage to every request

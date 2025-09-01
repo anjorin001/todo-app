@@ -9,7 +9,7 @@ const loginRequest = async (loginData) => {
     if (err.response) {
       res = err.response.data;
     } else {
-      console.error("Request failed:", err.message);
+      console.error("Request failed:", err);
     }
   }
   return res

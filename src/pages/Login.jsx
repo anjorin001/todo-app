@@ -1,6 +1,9 @@
 import loginRequest from "@/auth/login";
-import GoogleAuth from "@/components/googleAuth";
-import React, { useState } from "react";
+import GoogleAuth from "@/components/GoogleAuth";
+import { Task } from "@/components/TaskContext";
+import UserLoader from "@/components/UserLoader";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -8,25 +11,36 @@ const Login = () => {
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  const loginData = {
-    email,
-    password,
-  };
+  const [shouldLoadUser, setShouldLoadUser] = useState(false);
+  const { user, setUser } = useContext(Task);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await loginRequest(loginData);
-    const { status, message, data } = response
-    setMessage(status === "error" ? message : "Login successfully");
+    const response = await loginRequest({ email, password });
+    const { status, message, data } = response;
+
+    setMessage(status === "error" ? message : "Login successful");
     setMessageType(status === "error" ? "error" : "success");
-    localStorage.setItem("token", data?.token);
+
+    if (status === "success" && data?.token) {
+      localStorage.setItem("token", data.token);
+      setShouldLoadUser(true);
+    }
+
     setLoading(false);
   };
 
+  useEffect(() => {
+    if (user) {
+      navigate("/profile");
+    }
+  }, [user, navigate]);
+
   return (
     <>
+      {shouldLoadUser && <UserLoader />}
       <div className="auth-page">
         <div
           className="max-w-md mx-auto p-8 rounded-xl shadow-2xl"
@@ -77,7 +91,7 @@ const Login = () => {
               type="submit"
               className="w-full px-4 py-3 bg-blue-600 text-white border-none rounded-lg text-base font-semibold cursor-pointer mt-2 transition-colors duration-200 hover:bg-blue-700 flex justify-center items-center"
             >
-              {loading  ? (
+              {loading ? (
                 <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>
               ) : (
                 "Login"
