@@ -1,8 +1,8 @@
 import loginRequest from "@/auth/login";
 import GoogleAuth from "@/components/googleAuth";
 import { Task } from "@/components/TaskContext";
-import UserLoader from "@/components/userLoader";
-import React, { useContext, useEffect, useState } from "react";
+import UserLoader from "@/components/UserLoader";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -11,44 +11,36 @@ const Login = () => {
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { user } = useContext(Task);
-  const navigate = useNavigate()
-
-  const loginData = {
-    email,
-    password,
-  };
+  const [shouldLoadUser, setShouldLoadUser] = useState(false);
+  const { user, setUser } = useContext(Task);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await loginRequest(loginData);
+    const response = await loginRequest({ email, password });
     const { status, message, data } = response;
-    setMessage(status === "error" ? message : "Login successfully");
+
+    setMessage(status === "error" ? message : "Login successful");
     setMessageType(status === "error" ? "error" : "success");
-    localStorage.setItem("token", data?.token);
+
+    if (status === "success" && data?.token) {
+      localStorage.setItem("token", data.token);
+      setShouldLoadUser(true);
+    }
+
     setLoading(false);
   };
 
-  console.log(messageType)
-  if (messageType === "success") {
-    (async () => {
-    <UserLoader />
-    })();
-  }
-
-console.log("user", user)
   useEffect(() => {
     if (user) {
       navigate("/profile");
     }
-  }, [user]); 
-
-
-  console.log(user)
+  }, [user, navigate]);
 
   return (
     <>
+      {shouldLoadUser && <UserLoader />}
       <div className="auth-page">
         <div
           className="max-w-md mx-auto p-8 rounded-xl shadow-2xl"

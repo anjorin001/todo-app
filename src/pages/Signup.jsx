@@ -1,7 +1,6 @@
 import signupRequest from "@/auth/signup";
+import { useState } from "react";
 import GoogleAuth from "../components/GoogleAuth";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
 const Signup = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -21,9 +20,17 @@ const Signup = () => {
     setLoading(true);
     const response = await signupRequest(loginData);
     const { status, message, data } = response;
-    setMessage(status === "error" ? message : "Login successfully");
+    setMessage(status === "error" ? message : "Signup successful");
     setMessageType(status === "error" ? "error" : "success");
-    localStorage.setItem("token", data?.token);
+
+    if (status === "success" && data?.token) {
+      localStorage.setItem("token", data.token);
+      // Navigate to login or profile after successful signup
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 1500);
+    }
+
     setLoading(false);
   };
   return (
@@ -99,7 +106,7 @@ const Signup = () => {
               {loading ? (
                 <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>
               ) : (
-                "Login"
+                "Signup"
               )}
             </button>
           </form>
